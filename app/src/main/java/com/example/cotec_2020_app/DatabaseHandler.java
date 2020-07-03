@@ -82,14 +82,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_1;
         Cursor res = db.rawQuery(selectQuery, null);
-        close();
         return res;
     }
     public Cursor getPatient(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_1 + " WHERE " + COL_1_1 + " = " + id;
         Cursor res = db.rawQuery(selectQuery, null);
-        close();
         return res;
     }
     public Cursor getPatientByContact(String contact) {
@@ -150,7 +148,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_2;
         Cursor res = db.rawQuery(selectQuery, null);
-        close();
         return res;
     }
     public boolean updateContacts(String id, String first_name, String last_name, String nationality, String region, String address, String email, String age, String pathology, String patient, String hospital) {

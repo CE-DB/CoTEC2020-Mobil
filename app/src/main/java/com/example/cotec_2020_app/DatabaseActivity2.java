@@ -2,7 +2,6 @@ package com.example.cotec_2020_app;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -59,36 +58,25 @@ public class DatabaseActivity2 extends AppCompatActivity {
         selectAllContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor res = myDB.getAllPatients();
+                Cursor res = myDB.getAllContacts();
                 if (res.getCount() == 0) {
                     //show message
-                    showMessage("Error", "Nothing found!");
+                    Toast.makeText(DatabaseActivity2.this, "Error!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                StringBuffer buffer = new StringBuffer();
-                while (res.moveToNext()) {
-                    buffer.append("Id :" + res.getString(0) + "\n");
-                    buffer.append("First Name :" + res.getString(1) + "\n");
-                    buffer.append("Last Name :" + res.getString(2) + "\n");
-                    buffer.append("Nationality :" + res.getString(3) + "\n");
-                    buffer.append("Region :" + res.getString(4) + "\n");
-                    buffer.append("Address :" + res.getString(5) + "\n");
-                    buffer.append("Email :" + res.getString(6) + "\n");
-                    buffer.append("Age :" + res.getString(7) + "\n");
-                    buffer.append("Pathology :" + res.getString(8) + "\n");
-                    buffer.append("Patient :" + res.getString(9) + "\n");
-                    buffer.append("Hospital :" + res.getString(10) + "\n");
-                }
-                showMessage("Data ", buffer.toString());
+                Toast.makeText(DatabaseActivity2.this, res.getString(0), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(1), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(2), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(3), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(4), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(5), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(6), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(7), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(8), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(9), Toast.LENGTH_LONG).show();
+                Toast.makeText(DatabaseActivity2.this, res.getString(10), Toast.LENGTH_LONG).show();
             }
         });
-    }
-    public void showMessage(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
     }
     public void updateContact() {
         updateContacts.setOnClickListener(new View.OnClickListener() {
