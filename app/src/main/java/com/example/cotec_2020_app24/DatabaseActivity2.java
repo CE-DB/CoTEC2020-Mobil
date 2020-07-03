@@ -63,17 +63,19 @@ public class DatabaseActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Cursor res = myDB.getAllContacts();
-                if (res.getCount() == 0) {
+                StringBuffer buffer = new StringBuffer();
+                if (res != null) {
                     //show message
+                    while (res.moveToNext()) {
+                        buffer.append("Id :" + res.getString(0) + "\n");
+                        buffer.append("First Name :" + res.getString(1) + "\n");
+                        buffer.append("Last Name :" + res.getString(2) + "\n");
+                    }
+                } else {
                     showMessage("Error", "Nothing found!");
                     return;
                 }
-                StringBuffer buffer = new StringBuffer();
-                while (res.moveToNext()) {
-                    buffer.append("Id :" + res.getString(0) + "\n");
-                    buffer.append("First Name :" + res.getString(1) + "\n");
-                    buffer.append("Last Name :" + res.getString(2) + "\n");
-                }
+                res.close();
                 showMessage("Data ", buffer.toString());
             }
         });
@@ -83,15 +85,17 @@ public class DatabaseActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Cursor res = myDB.getContact(editID.getText().toString());
-                if (res.getCount() == 0) {
+                StringBuffer buffer = new StringBuffer();
+                if (res != null && res.moveToFirst()) {
                     //show message
+                    buffer.append("Id :" + res.getString(0) + "\n");
+                    buffer.append("First Name :" + res.getString(1) + "\n");
+                    buffer.append("Last Name :" + res.getString(2) + "\n");
+                } else {
                     showMessage("Error", "Nothing found!");
                     return;
                 }
-                StringBuffer buffer = new StringBuffer();
-                buffer.append("Id :" + res.getString(0) + "\n");
-                buffer.append("First Name :" + res.getString(1) + "\n");
-                buffer.append("Last Name :" + res.getString(2) + "\n");
+                res.close();
                 showMessage("Data ", buffer.toString());
             }
         });
@@ -101,15 +105,17 @@ public class DatabaseActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Cursor res = myDB.getContact(editPatient.getText().toString());
-                if (res.getCount() == 0) {
+                StringBuffer buffer = new StringBuffer();
+                if (res != null && res.moveToFirst()) {
                     //show message
+                    buffer.append("Id :" + res.getString(0) + "\n");
+                    buffer.append("First Name :" + res.getString(1) + "\n");
+                    buffer.append("Last Name :" + res.getString(2) + "\n");
+                } else {
                     showMessage("Error", "Nothing found!");
                     return;
                 }
-                StringBuffer buffer = new StringBuffer();
-                buffer.append("Id :" + res.getString(0) + "\n");
-                buffer.append("First Name :" + res.getString(1) + "\n");
-                buffer.append("Last Name :" + res.getString(2) + "\n");
+                res.close();
                 showMessage("Data ", buffer.toString());
             }
         });

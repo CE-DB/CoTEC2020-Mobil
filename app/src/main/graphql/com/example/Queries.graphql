@@ -1,0 +1,56 @@
+query patientList {
+  patients {
+    identification
+    firstName
+    lastName
+    nationality
+    region
+    dateEntrance
+    intensiveCareUnite
+    age
+	hospitalized
+    pathologies
+    medication
+    state
+    contacts
+  }
+}
+
+query pathologyList {
+  pathologies {
+    description
+    name
+    symptoms
+    treatment
+  }
+}
+
+query patientsReportList {
+  patientsReport
+}
+
+query patientsStatesList {
+  patientStates
+}
+
+query contactList {
+  contacts {
+    identification
+    firstName
+    lastName
+    nationality
+    origin
+    address
+    email
+    age
+    pathologies
+  }
+}
+
+query contactVisitList {
+  contactVisits {
+    contact
+    patient
+    visitDate
+  }
+}

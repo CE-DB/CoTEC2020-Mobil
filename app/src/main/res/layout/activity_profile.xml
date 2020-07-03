@@ -11,7 +11,6 @@
         android:layout_width="100dp"
         android:layout_height="0dp"
         android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="84dp"
         app:layout_constraintBottom_toTopOf="@+id/name"
@@ -34,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="60dp"
         android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/email"
@@ -45,10 +43,11 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="53dp"
         android:text="Email"
         app:layout_constraintBottom_toTopOf="@+id/id"
-        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
@@ -56,7 +55,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginBottom="45dp"
         android:text="ID"
         app:layout_constraintBottom_toTopOf="@+id/signOutButton"
@@ -78,11 +76,22 @@
         android:id="@+id/contactsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="21dp"
         android:text="Manage Contacts"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/onlineButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patientsButton" />
+
+    <Button
+        android:id="@+id/onlineButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:text="Go Online!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

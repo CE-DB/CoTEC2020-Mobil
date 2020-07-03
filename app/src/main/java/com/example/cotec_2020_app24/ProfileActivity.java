@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 public class ProfileActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private ImageView profileImage;
     private TextView name, email, id;
-    private Button signOutButton, patientsButton, contactsButton;
+    private Button signOutButton, patientsButton, contactsButton, onlineButton;
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
     @Override
@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         signOutButton = findViewById(R.id.signOutButton);
         patientsButton = findViewById(R.id.patientsButton);
         contactsButton = findViewById(R.id.contactsButton);
+        onlineButton = findViewById(R.id.onlineButton);
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
         signOutButton.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,13 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, DatabaseActivity2.class));
+                finish();
+            }
+        });
+        onlineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, ApolloActivity.class));
                 finish();
             }
         });
