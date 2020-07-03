@@ -13,7 +13,8 @@ import android.widget.Toast;
 public class DatabaseActivity extends AppCompatActivity {
     DatabaseHandler myDB;
     EditText editID, editFirstName, editLastName, editNationality, editRegion, editICU, editAge, editHospitalized, editMedication, editPathology, editState, editContact;
-    Button addPatient, selectAllPatients, updatePatients, deletePatients, backButton;
+    Button createPatient, addPatient, selectAllPatients, selectPatient, updatePatients, deletePatients, backButton;
+    Patient myPatient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +32,30 @@ public class DatabaseActivity extends AppCompatActivity {
         editPathology = findViewById(R.id.editPathology);
         editState = findViewById(R.id.editState);
         editContact = findViewById(R.id.editContact);
+        createPatient = findViewById(R.id.createButton);
         addPatient = findViewById(R.id.insertButton);
         selectAllPatients = findViewById(R.id.selectAllButton);
+        selectPatient = findViewById(R.id.selectButton);
         updatePatients = findViewById(R.id.updateButton);
         deletePatients = findViewById(R.id.deleteButton);
         backButton = findViewById(R.id.patientsBackButton);
+        createPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myPatient = new Patient(Integer.parseInt(editID.getText().toString()),
+                        editFirstName.getText().toString(),
+                        editLastName.getText().toString(),
+                        editNationality.getText().toString(),
+                        editRegion.getText().toString(),
+                        editICU.getText().toString(),
+                        Integer.parseInt(editAge.getText().toString()),
+                        editHospitalized.getText().toString(),
+                        editMedication.getText().toString(),
+                        editPathology.getText().toString(),
+                        editState.getText().toString(),
+                        editContact.getText().toString());
+            }
+        });
         addPatient();
         viewPatients();
         updatePatient();
@@ -46,7 +66,7 @@ public class DatabaseActivity extends AppCompatActivity {
         addPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDB.insertPatient(editID.getText().toString(), editFirstName.getText().toString(), editLastName.getText().toString(), editNationality.getText().toString(), editRegion.getText().toString(), editICU.getText().toString(), editAge.getText().toString(), editHospitalized.getText().toString(), editMedication.getText().toString(), editPathology.getText().toString(), editState.getText().toString(), editContact.getText().toString().split(","));
+                boolean isInserted = myDB.insertPatient(myPatient);
                 if (isInserted) {
                     Toast.makeText(DatabaseActivity.this, "Data Inserted!", Toast.LENGTH_LONG).show();
                 } else {
@@ -97,7 +117,7 @@ public class DatabaseActivity extends AppCompatActivity {
         updatePatients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isUpdated = myDB.updatePatients(editID.getText().toString(), editFirstName.getText().toString(), editLastName.getText().toString(), editNationality.getText().toString(), editRegion.getText().toString(), editICU.getText().toString(), editAge.getText().toString(), editHospitalized.getText().toString(), editMedication.getText().toString(), editPathology.getText().toString(), editState.getText().toString(), editContact.getText().toString().split(","));
+                boolean isUpdated = myDB.updatePatients(myPatient);
                 if (isUpdated) {
                     Toast.makeText(DatabaseActivity.this, "Data Updated!", Toast.LENGTH_LONG).show();
                 } else {
@@ -110,7 +130,7 @@ public class DatabaseActivity extends AppCompatActivity {
         deletePatients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer deletedRows = myDB.deletePatients(editID.getText().toString(), true, editContact.getText().toString().split(","));
+                Integer deletedRows = myDB.deletePatients(myPatient.getId());
                 if (deletedRows > 0) {
                     Toast.makeText(DatabaseActivity.this, "Data Deleted!", Toast.LENGTH_LONG).show();
                 } else {
