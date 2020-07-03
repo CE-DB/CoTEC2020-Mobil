@@ -134,6 +134,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor res = db.rawQuery(selectQuery, null);
         return res;
     }
+    public Cursor getContact(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME_1 + " WHERE " + COL_1_1 + " = " + id;
+        Cursor res = db.rawQuery(selectQuery, null);
+        return res;
+    }
     public boolean updateContacts(Contact contact) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -56,6 +56,7 @@ public class DatabaseActivity2 extends AppCompatActivity {
         });
         addContact();
         viewContacts();
+        viewContact();
         updateContact();
         deleteContact();
         goToProfile();
@@ -97,6 +98,32 @@ public class DatabaseActivity2 extends AppCompatActivity {
                     buffer.append("Patient :" + res.getString(9) + "\n");
                     buffer.append("Hospital :" + res.getString(10) + "\n");
                 }
+                showMessage("Data ", buffer.toString());
+            }
+        });
+    }
+    public void viewContact() {
+        selectContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor res = myDB.getContact(myContact.getId());
+                if (res.getCount() == 0) {
+                    //show message
+                    showMessage("Error", "Nothing found!");
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                buffer.append("Id :" + res.getString(0) + "\n");
+                buffer.append("First Name :" + res.getString(1) + "\n");
+                buffer.append("Last Name :" + res.getString(2) + "\n");
+                buffer.append("Nationality :" + res.getString(3) + "\n");
+                buffer.append("Region :" + res.getString(4) + "\n");
+                buffer.append("Address :" + res.getString(5) + "\n");
+                buffer.append("Email :" + res.getString(6) + "\n");
+                buffer.append("Age :" + res.getString(7) + "\n");
+                buffer.append("Pathology :" + res.getString(8) + "\n");
+                buffer.append("Patient :" + res.getString(9) + "\n");
+                buffer.append("Hospital :" + res.getString(10) + "\n");
                 showMessage("Data ", buffer.toString());
             }
         });
