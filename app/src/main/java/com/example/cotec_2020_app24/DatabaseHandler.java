@@ -1,4 +1,4 @@
-package com.example.cotec_2020_app;
+package com.example.cotec_2020_app24;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -51,20 +51,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_2);
         onCreate(db);
     }
-    public boolean insertPatient(Patient patient) {
+    public boolean insertPatient(String id, String first_name, String last_name, String nationality, String region, String intensiveCare, String age, String hospitalized, String medication, String pathology, String state, String contacts) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1_1, patient.getId());
-        contentValues.put(COL_2_1, patient.getFirstName());
-        contentValues.put(COL_3_1, patient.getLastName());
-        contentValues.put(COL_4_1, patient.getNationality());
-        contentValues.put(COL_5_1, patient.getRegion());
-        contentValues.put(COL_6_1, patient.getIcu());
-        contentValues.put(COL_7_1, patient.getAge());
-        contentValues.put(COL_8_1, patient.getHospitalized());
-        contentValues.put(COL_9_1, patient.getMedication());
-        contentValues.put(COL_10_1, patient.getPathology());
-        contentValues.put(COL_11_1, patient.getState());
+        contentValues.put(COL_1_1, id);
+        contentValues.put(COL_2_1, first_name);
+        contentValues.put(COL_3_1, last_name);
+        contentValues.put(COL_4_1, nationality);
+        contentValues.put(COL_5_1, region);
+        contentValues.put(COL_6_1, intensiveCare);
+        contentValues.put(COL_7_1, age);
+        contentValues.put(COL_8_1, hospitalized);
+        contentValues.put(COL_9_1, medication);
+        contentValues.put(COL_10_1, pathology);
+        contentValues.put(COL_11_1, state);
+        contentValues.put(COL_12_1, contacts);
         long result = db.insert(TABLE_NAME_1, null, contentValues);
         if (result == -1) {
             return false;
@@ -73,54 +74,59 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
     public Cursor getAllPatients() {
-        List<Patient> patients = new ArrayList<Patient>();
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_1;
         Cursor res = db.rawQuery(selectQuery, null);
         return res;
     }
-    public Cursor getPatient(int id) {
+    public Cursor getPatient(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_1 + " WHERE " + COL_1_1 + " = " + id;
         Cursor res = db.rawQuery(selectQuery, null);
         return res;
     }
-    public boolean updatePatients(Patient patient) {
+    public Cursor getPatientByContact(String contacts) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME_1 + " WHERE " + COL_12_1 + " = " + contacts;
+        Cursor res = db.rawQuery(selectQuery, null);
+        return res;
+    }
+    public boolean updatePatients(String id, String first_name, String last_name, String nationality, String region, String intensiveCare, String age, String hospitalized, String medication, String pathology, String state, String contacts) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1_1, patient.getId());
-        contentValues.put(COL_2_1, patient.getFirstName());
-        contentValues.put(COL_3_1, patient.getLastName());
-        contentValues.put(COL_4_1, patient.getNationality());
-        contentValues.put(COL_5_1, patient.getRegion());
-        contentValues.put(COL_6_1, patient.getIcu());
-        contentValues.put(COL_7_1, patient.getAge());
-        contentValues.put(COL_8_1, patient.getHospitalized());
-        contentValues.put(COL_9_1, patient.getMedication());
-        contentValues.put(COL_10_1, patient.getMedication());
-        contentValues.put(COL_11_1, patient.getState());
-        contentValues.put(COL_12_1, patient.getContact());
-        db.update(TABLE_NAME_1, contentValues, "id = ?", new String[] {String.valueOf(patient.getId())});
+        contentValues.put(COL_1_1, id);
+        contentValues.put(COL_2_1, first_name);
+        contentValues.put(COL_3_1, last_name);
+        contentValues.put(COL_4_1, nationality);
+        contentValues.put(COL_5_1, region);
+        contentValues.put(COL_6_1, intensiveCare);
+        contentValues.put(COL_7_1, age);
+        contentValues.put(COL_8_1, hospitalized);
+        contentValues.put(COL_9_1, medication);
+        contentValues.put(COL_10_1, pathology);
+        contentValues.put(COL_11_1, state);
+        contentValues.put(COL_12_1, contacts);
+        db.update(TABLE_NAME_1, contentValues, "id = ?", new String[] {id});
         return true;
     }
-    public Integer deletePatients(int id) {
+    public Integer deletePatients(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_1, "ID = ?", new String[] {String.valueOf(id)});
+        return db.delete(TABLE_NAME_1, "ID = ?", new String[] {id});
     }
-    public boolean insertContact(Contact contact) {
+    public boolean insertContact(String id, String first_name, String last_name, String nationality, String region, String address, String email, String age, String pathology, String patient, String hospital) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1_2, contact.getId());
-        contentValues.put(COL_2_2, contact.getFirstName());
-        contentValues.put(COL_3_2, contact.getLastName());
-        contentValues.put(COL_4_2, contact.getNationality());
-        contentValues.put(COL_5_2, contact.getRegion());
-        contentValues.put(COL_6_2, contact.getAddress());
-        contentValues.put(COL_7_2, contact.getEmail());
-        contentValues.put(COL_8_2, contact.getAge());
-        contentValues.put(COL_9_2, contact.getPathology());
-        contentValues.put(COL_10_2, contact.getPatient());
-        contentValues.put(COL_11_2, contact.getHospital());
+        contentValues.put(COL_1_2, id);
+        contentValues.put(COL_2_2, first_name);
+        contentValues.put(COL_3_2, last_name);
+        contentValues.put(COL_4_2, nationality);
+        contentValues.put(COL_5_2, region);
+        contentValues.put(COL_6_2, address);
+        contentValues.put(COL_7_2, email);
+        contentValues.put(COL_8_2, age);
+        contentValues.put(COL_9_2, pathology);
+        contentValues.put(COL_10_2, patient);
+        contentValues.put(COL_11_2, hospital);
         long result = db.insert(TABLE_NAME_1, null, contentValues);
         if (result == -1) {
             return false;
@@ -134,31 +140,37 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor res = db.rawQuery(selectQuery, null);
         return res;
     }
-    public Cursor getContact(int id) {
+    public Cursor getContact(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_1 + " WHERE " + COL_1_1 + " = " + id;
         Cursor res = db.rawQuery(selectQuery, null);
         return res;
     }
-    public boolean updateContacts(Contact contact) {
+    public Cursor getContactByPatient(String patient) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME_1 + " WHERE " + COL_10_2 + " = " + patient;
+        Cursor res = db.rawQuery(selectQuery, null);
+        return res;
+    }
+    public boolean updateContacts(String id, String first_name, String last_name, String nationality, String region, String address, String email, String age, String pathology, String patient, String hospital) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1_2, contact.getId());
-        contentValues.put(COL_2_2, contact.getFirstName());
-        contentValues.put(COL_3_2, contact.getLastName());
-        contentValues.put(COL_4_2, contact.getNationality());
-        contentValues.put(COL_5_2, contact.getRegion());
-        contentValues.put(COL_6_2, contact.getAddress());
-        contentValues.put(COL_7_2, contact.getEmail());
-        contentValues.put(COL_8_2, contact.getAge());
-        contentValues.put(COL_9_2, contact.getPathology());
-        contentValues.put(COL_10_2, contact.getPatient());
-        contentValues.put(COL_11_2, contact.getHospital());
-        db.update(TABLE_NAME_2, contentValues, "id = ?", new String[] {String.valueOf(contact.getId())});
+        contentValues.put(COL_1_2, id);
+        contentValues.put(COL_2_2, first_name);
+        contentValues.put(COL_3_2, last_name);
+        contentValues.put(COL_4_2, nationality);
+        contentValues.put(COL_5_2, region);
+        contentValues.put(COL_6_2, address);
+        contentValues.put(COL_7_2, email);
+        contentValues.put(COL_8_2, age);
+        contentValues.put(COL_9_2, pathology);
+        contentValues.put(COL_10_2, patient);
+        contentValues.put(COL_11_2, hospital);
+        db.update(TABLE_NAME_2, contentValues, "id = ?", new String[] {id});
         return true;
     }
-    public Integer deleteContacts(int id) {
+    public Integer deleteContacts(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_2, "ID = ?", new String[] {String.valueOf(id)});
+        return db.delete(TABLE_NAME_2, "ID = ?", new String[] {id});
     }
 }

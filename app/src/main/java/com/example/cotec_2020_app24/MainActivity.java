@@ -1,4 +1,4 @@
-package com.example.cotec_2020_app;
+package com.example.cotec_2020_app24;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

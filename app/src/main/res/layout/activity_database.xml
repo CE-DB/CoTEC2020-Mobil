@@ -11,11 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
         android:layout_marginTop="7dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/id"
+        android:text="ID"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +25,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/first_name"
+        android:text="First Name"
         app:layout_constraintStart_toStartOf="@+id/editID"
         app:layout_constraintTop_toBottomOf="@+id/editID" />
 
@@ -35,11 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/last_name"
+        android:text="Last Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
 
@@ -48,11 +46,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="17dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/nation"
+        android:text="Nation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editLastName" />
 
@@ -63,7 +60,7 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/region"
+        android:text="Region"
         app:layout_constraintStart_toStartOf="@+id/editNationality"
         app:layout_constraintTop_toBottomOf="@+id/editNationality" />
 
@@ -72,11 +69,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/icu"
+        android:text="ICU"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRegion" />
 
@@ -85,11 +81,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/age"
+        android:text="Age"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editICU" />
 
@@ -98,22 +93,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/hospitalized"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAge" />
+        android:text="Hospitalized"
+        app:layout_constraintBottom_toBottomOf="@+id/selectButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/insertButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="14dp"
         android:layout_marginBottom="1dp"
-        android:text="@string/insert"
+        android:text="Insert"
         app:layout_constraintBottom_toTopOf="@+id/editLastName"
         app:layout_constraintStart_toEndOf="@+id/editFirstName" />
 
@@ -122,9 +115,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
-        android:text="@string/select_all"
+        android:text="Select All"
         app:layout_constraintStart_toEndOf="@+id/editLastName"
         app:layout_constraintTop_toTopOf="@+id/editLastName" />
 
@@ -133,8 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="@string/update"
+        android:text="Update"
         app:layout_constraintBaseline_toBaselineOf="@+id/editICU"
         app:layout_constraintStart_toEndOf="@+id/editICU" />
 
@@ -143,8 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="@string/delete"
+        android:text="Delete"
         app:layout_constraintStart_toEndOf="@+id/editNationality"
         app:layout_constraintTop_toBottomOf="@+id/editNationality" />
 
@@ -152,61 +142,76 @@
         android:id="@+id/editMedication"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/medication"
-        app:layout_constraintStart_toStartOf="@+id/editHospitalized"
-        app:layout_constraintTop_toBottomOf="@+id/editHospitalized" />
+        android:text="Medication"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectButton" />
 
     <EditText
         android:id="@+id/editPathology"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/pathologies"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Pathology"
+        app:layout_constraintStart_toStartOf="@+id/editMedication"
         app:layout_constraintTop_toBottomOf="@+id/editMedication" />
 
     <EditText
         android:id="@+id/editState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/state"
-        app:layout_constraintStart_toStartOf="@+id/editPathology"
-        app:layout_constraintTop_toBottomOf="@+id/editPathology" />
+        android:text="State"
+        app:layout_constraintBottom_toTopOf="@+id/editContact"
+        app:layout_constraintEnd_toEndOf="@+id/editContact" />
 
     <EditText
         android:id="@+id/editContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="4dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/contacts"
+        android:text="Contacts"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editState" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/patientsBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
         android:layout_marginTop="8dp"
-        android:text="@string/go_back"
+        android:text="Go Back!"
         app:layout_constraintStart_toEndOf="@+id/editAge"
         app:layout_constraintTop_toTopOf="@+id/editAge" />
+
+    <Button
+        android:id="@+id/selectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Select"
+        app:layout_constraintStart_toStartOf="@+id/patientsBackButton"
+        app:layout_constraintTop_toBottomOf="@+id/patientsBackButton" />
+
+    <Button
+        android:id="@+id/selectButtonByContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Contact"
+        app:layout_constraintStart_toEndOf="@+id/editMedication"
+        app:layout_constraintTop_toTopOf="@+id/editMedication" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

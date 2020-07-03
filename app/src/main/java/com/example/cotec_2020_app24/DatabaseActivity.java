@@ -1,4 +1,4 @@
-package com.example.cotec_2020_app;
+package com.example.cotec_2020_app24;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +13,7 @@ import android.widget.Toast;
 public class DatabaseActivity extends AppCompatActivity {
     DatabaseHandler myDB;
     EditText editID, editFirstName, editLastName, editNationality, editRegion, editICU, editAge, editHospitalized, editMedication, editPathology, editState, editContact;
-    Button createPatient, addPatient, selectAllPatients, selectPatient, updatePatients, deletePatients, backButton;
-    Patient myPatient;
+    Button selectPatientID, addPatient, selectAllPatients, selectPatientContact, updatePatients, deletePatients, backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,33 +31,17 @@ public class DatabaseActivity extends AppCompatActivity {
         editPathology = findViewById(R.id.editPathology);
         editState = findViewById(R.id.editState);
         editContact = findViewById(R.id.editContact);
-        createPatient = findViewById(R.id.createButton);
+        selectPatientContact = findViewById(R.id.selectButtonByContact);
         addPatient = findViewById(R.id.insertButton);
         selectAllPatients = findViewById(R.id.selectAllButton);
-        selectPatient = findViewById(R.id.selectButton);
+        selectPatientID = findViewById(R.id.selectButton);
         updatePatients = findViewById(R.id.updateButton);
         deletePatients = findViewById(R.id.deleteButton);
         backButton = findViewById(R.id.patientsBackButton);
-        createPatient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPatient = new Patient(Integer.parseInt(editID.getText().toString()),
-                        editFirstName.getText().toString(),
-                        editLastName.getText().toString(),
-                        editNationality.getText().toString(),
-                        editRegion.getText().toString(),
-                        editICU.getText().toString(),
-                        Integer.parseInt(editAge.getText().toString()),
-                        editHospitalized.getText().toString(),
-                        editMedication.getText().toString(),
-                        editPathology.getText().toString(),
-                        editState.getText().toString(),
-                        editContact.getText().toString());
-            }
-        });
         addPatient();
         viewPatients();
-        viewPatient();
+        viewPatientByID();
+        viewPatientByContact();
         updatePatient();
         deletePatient();
         goToProfile();
@@ -67,7 +50,7 @@ public class DatabaseActivity extends AppCompatActivity {
         addPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDB.insertPatient(myPatient);
+                boolean isInserted = myDB.insertPatient(editID.getText().toString(), editFirstName.getText().toString(), editLastName.getText().toString(), editNationality.getText().toString(), editRegion.getText().toString(), editICU.getText().toString(), editAge.getText().toString(), editHospitalized.getText().toString(), editMedication.getText().toString(), editPathology.getText().toString(), editState.getText().toString(), editContact.getText().toString());
                 if (isInserted) {
                     Toast.makeText(DatabaseActivity.this, "Data Inserted!", Toast.LENGTH_LONG).show();
                 } else {
@@ -91,27 +74,17 @@ public class DatabaseActivity extends AppCompatActivity {
                     buffer.append("Id :" + res.getString(0) + "\n");
                     buffer.append("First Name :" + res.getString(1) + "\n");
                     buffer.append("Last Name :" + res.getString(2) + "\n");
-                    buffer.append("Nationality :" + res.getString(3) + "\n");
-                    buffer.append("Region :" + res.getString(4) + "\n");
-                    buffer.append("ICU :" + res.getString(5) + "\n");
-                    buffer.append("Age :" + res.getString(6) + "\n");
-                    buffer.append("Hospitalized :" + res.getString(7) + "\n");
-                    buffer.append("Medication :" + res.getString(8) + "\n");
-                    buffer.append("Medication :" + res.getString(9) + "\n");
-                    buffer.append("Pathology :" + res.getString(10) + "\n");
-                    buffer.append("State :" + res.getString(11) + "\n");
-                    buffer.append("Contact :" + res.getString(12) + "\n");
                 }
                 //show all data
                 showMessage("Data ", buffer.toString());
             }
         });
     }
-    public void viewPatient() {
-        selectPatient.setOnClickListener(new View.OnClickListener() {
+    public void viewPatientByID() {
+        selectPatientID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor res = myDB.getPatient(myPatient.getId());
+                Cursor res = myDB.getPatient(editID.getText().toString());
                 if (res.getCount() == 0) {
                     //show message
                     showMessage("Error", "Nothing found!");
@@ -121,16 +94,24 @@ public class DatabaseActivity extends AppCompatActivity {
                 buffer.append("Id :" + res.getString(0) + "\n");
                 buffer.append("First Name :" + res.getString(1) + "\n");
                 buffer.append("Last Name :" + res.getString(2) + "\n");
-                buffer.append("Nationality :" + res.getString(3) + "\n");
-                buffer.append("Region :" + res.getString(4) + "\n");
-                buffer.append("ICU :" + res.getString(5) + "\n");
-                buffer.append("Age :" + res.getString(6) + "\n");
-                buffer.append("Hospitalized :" + res.getString(7) + "\n");
-                buffer.append("Medication :" + res.getString(8) + "\n");
-                buffer.append("Medication :" + res.getString(9) + "\n");
-                buffer.append("Pathology :" + res.getString(10) + "\n");
-                buffer.append("State :" + res.getString(11) + "\n");
-                buffer.append("Contact :" + res.getString(12) + "\n");
+                showMessage("Data ", buffer.toString());
+            }
+        });
+    }
+    public void viewPatientByContact() {
+        selectPatientContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor res = myDB.getPatientByContact(editContact.getText().toString());
+                if (res.getCount() == 0) {
+                    //show message
+                    showMessage("Error", "Nothing found!");
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                buffer.append("Id :" + res.getString(0) + "\n");
+                buffer.append("First Name :" + res.getString(1) + "\n");
+                buffer.append("Last Name :" + res.getString(2) + "\n");
                 showMessage("Data ", buffer.toString());
             }
         });
@@ -146,7 +127,7 @@ public class DatabaseActivity extends AppCompatActivity {
         updatePatients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isUpdated = myDB.updatePatients(myPatient);
+                boolean isUpdated = myDB.updatePatients(editID.getText().toString(), editFirstName.getText().toString(), editLastName.getText().toString(), editNationality.getText().toString(), editRegion.getText().toString(), editICU.getText().toString(), editAge.getText().toString(), editHospitalized.getText().toString(), editMedication.getText().toString(), editPathology.getText().toString(), editState.getText().toString(), editContact.getText().toString());
                 if (isUpdated) {
                     Toast.makeText(DatabaseActivity.this, "Data Updated!", Toast.LENGTH_LONG).show();
                 } else {
@@ -159,7 +140,7 @@ public class DatabaseActivity extends AppCompatActivity {
         deletePatients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer deletedRows = myDB.deletePatients(myPatient.getId());
+                Integer deletedRows = myDB.deletePatients(editID.getText().toString());
                 if (deletedRows > 0) {
                     Toast.makeText(DatabaseActivity.this, "Data Deleted!", Toast.LENGTH_LONG).show();
                 } else {
