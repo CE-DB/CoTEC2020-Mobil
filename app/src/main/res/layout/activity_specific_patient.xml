@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".patients.SpecificPatient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="2dp"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="Identification:"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/detailPatientIDContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="IDENTIFICATION"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Name:"/>
+
+            <TextView
+                android:id="@+id/detailPatientNameContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="NAME"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Last name:"/>
+
+            <TextView
+                android:id="@+id/detailPatientLastNameContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="LAST NAME"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Age:"/>
+
+            <TextView
+                android:id="@+id/detailPatientAgeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="AGE"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Country:"/>
+
+            <TextView
+                android:id="@+id/detailPatientCountryContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="COUNTRY"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientDateOfAdmission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Date of Admission:"/>
+
+            <TextView
+                android:id="@+id/detailPatientDateOfAdmissionContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="DateOfAdmission"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientHospitalized"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:text="Hospitalized:"/>
+
+            <TextView
+                android:id="@+id/detailPatientHospitalizedContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="Hospitalized"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientICU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="ICU:"/>
+
+            <TextView
+                android:id="@+id/detailPatientICUContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="ICU"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientNationality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:text="Nationality:"/>
+
+            <TextView
+                android:id="@+id/detailPatientNationalityContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="Nationality"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientRegion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Region:"/>
+
+            <TextView
+                android:id="@+id/detailPatientRegionContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="Region"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/detailPatientState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="State:"/>
+
+            <TextView
+                android:id="@+id/detailPatientStateContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="State"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Pathologies:"/>
+
+            <TextView
+                android:id="@+id/detailPatientPathologyContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="Pathologies"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Medications:"/>
+
+            <TextView
+                android:id="@+id/detailPatientMedicationContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginEnd="5dp"
+                android:textSize="19sp"
+                android:text="Medications"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+
+            <Button
+                android:id="@+id/PatientPathologiesButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:text="Pathologies" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+
+            <Button
+                android:id="@+id/PatientMedicationsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:text="Medications" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+
+            <Button
+                android:id="@+id/PatientContactsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:text="Contacts" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp">
+
+
+        <Button
+            android:id="@+id/PatientDeleteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete" />
+
+        <Button
+            android:id="@+id/PatientUpdateButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

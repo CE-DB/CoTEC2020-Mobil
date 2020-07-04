@@ -1,18 +1,38 @@
-query patientList {
+query patients {
   patients {
     identification
     firstName
     lastName
     nationality
-    region
+  	region {
+      name
+    }
+	country {
+        name
+      }
     dateEntrance
     intensiveCareUnite
     age
-	hospitalized
-    pathologies
-    medication
+    hospitalized
+    pathologies {
+      name
+      treatment
+      description
+      symptoms
+    }
+    medication {
+      name
+      pharmaceutical
+    }
     state
-    contacts
+    contacts {
+      contact {
+        identification
+        firstName
+        lastName
+      }
+      visitDate
+    }
   }
 }
 
@@ -33,24 +53,195 @@ query patientsStatesList {
   patientStates
 }
 
-query contactList {
+query contacts {
   contacts {
     identification
     firstName
     lastName
     nationality
-    origin
+    origin {
+      name
+      country {
+        name
+      }
+    }
     address
     email
     age
-    pathologies
+    pathologies {
+      name
+      description
+      symptoms
+      treatment
+    }
   }
 }
 
 query contactVisitList {
   contactVisits {
-    contact
-    patient
+    contact {
+      identification
+      firstName
+      lastName
+    }
+    patient {
+      identification
+      firstName
+      lastName
+    }
     visitDate
+  }
+}
+
+mutation auth($id: String!, $pass: String!){
+  authentication(id: $id, password: $pass) {
+    accessKey
+    role
+  }
+}
+
+mutation addPatient($p: CreatePatientInput!) {
+  addPatient (patient: $p){
+    identification
+    firstName
+    lastName
+  }
+}
+
+mutation deletePatients ($idToDelete: String! ) {
+  deletePatient (identification: $idToDelete){
+    identification
+    firstName
+    lastName
+  }
+}
+
+mutation updatePatients($idToUpdate: String!, $input: UpdatePatientInput!){
+  updatePatient(identification:$idToUpdate, input: $input){
+    identification
+    firstName
+    lastName
+  }
+}
+
+mutation createContacts($input: CreateContactInput!) {
+  addContact(input: $input) {
+    identification
+    firstName
+    lastName
+  }
+}
+
+mutation updateContacts($toUpdate: String!, $input: UpdateContactInput!) {
+  updateContact(identification: $toUpdate, input: $input) {
+    identification
+    firstName
+    lastName
+  }
+}
+
+mutation deleteContacts($toDelete: String!) {
+  deleteContact(identification: $toDelete) {
+    identification
+    firstName
+    lastName
+    nationality
+    origin {
+      name
+      country {
+        name
+      }
+    }
+    address
+    email
+    age
+    pathologies {
+      name
+      description
+      symptoms
+      description
+    }
+  }
+}
+
+mutation addContactVisit(
+  $contactID: String!
+  $patientID: String!
+  $date: Date!
+) {
+  addContactVisit(
+    contactId: $contactID
+    patientId: $patientID
+    visitDate: $date
+  ) {
+    contact {
+      identification
+      firstName
+      lastName
+    }
+    patient {
+      identification
+      firstName
+      lastName
+    }
+    visitDate
+  }
+}
+
+
+mutation updateContactVisit(
+  $contactID: String!
+  $patientID: String!
+  $date: Date!
+  $input: UpdateContactVisitInput!
+) {
+  updateContactVisit(
+    input: $input
+    contactId: $contactID
+    patientId: $patientID
+    visitDate: $date
+  ) {
+    contact {
+      identification
+      firstName
+      lastName
+    }
+    patient {
+      identification
+      firstName
+      lastName
+    }
+    visitDate
+  }
+}
+
+
+mutation deleteContactVisit(
+  $contactID: String!
+  $patientID: String!
+  $date: Date!
+) {
+  deleteContactVisit(
+    contactId: $contactID
+    patientId: $patientID
+    visitDate: $date
+  ) {
+    contact {
+      identification
+      firstName
+      lastName
+    }
+    patient {
+      identification
+      firstName
+      lastName
+    }
+    visitDate
+  }
+}
+
+query countriesList {
+  countries {
+    name
   }
 }

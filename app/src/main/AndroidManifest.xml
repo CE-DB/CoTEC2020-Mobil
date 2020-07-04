@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cotec_2020_app24">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,17 +12,59 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ApolloActivity"></activity>
-        <activity android:name=".DatabaseActivity2" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".DatabaseActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainMenu"></activity>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".patients.PatientContactUpdate"
+            android:label="Contacts"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
+            android:name=".contacts.ContactPathologyUpdate"
+            android:label="Pathologies"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".contacts.ContactsUpdate" />
+        <activity
+            android:name=".contacts.ContactPathologies"
+            android:label="Pathologies"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".contacts.SpecificContact" />
+        <activity
+            android:name=".patients.PatientMedicationUpdate"
+            android:label="Medications"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
+            android:name=".patients.PatientPathologyUpdate"
+            android:label="Pathologies"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".patients.PatientsUpdate" />
+        <activity
+            android:name=".patients.PatientContacts"
+            android:label="Contacts"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
+            android:name=".patients.PatientMedications"
+            android:label="Medications"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
+            android:name=".patients.PatientPathologies"
+            android:label="Pathologies"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".contacts.ContactsView" />
+        <activity android:name=".patients.SpecificPatient" />
+        <activity android:name=".patients.PatientsView">
+        </activity>
+        <activity android:name=".VisitsActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".PatientActivity" />
+        <activity android:name=".ApolloActivity" />
     </application>
 
 </manifest>
