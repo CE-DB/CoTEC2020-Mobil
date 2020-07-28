@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                                     runOnUiThread(() -> {
                                         Toast.makeText(LoginActivity.this, "Access granted", Toast.LENGTH_SHORT).show();
                                     });
-                                    //GlobalVars.getInstance().setAccessKey(response.getData().authentication().accessKey());
+                                    GlobalVars.getInstance().setAccessKey(null);
                                     Log.d("auth", GlobalVars.getInstance().getAccessKey());
 
                                     Intent i = new Intent(LoginActivity.this, MainMenu.class);
